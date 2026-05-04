@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gongying Pu — Landscape Architect, Los Angeles</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== HERO BIO ===== -->
+<header class="hero" id="hero">
+  <div class="shell" style="display: contents;">
+    <div class="hero__portrait">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80" alt="Gongying Pu portrait" />
+    </div>
+    <div class="hero__copy">
+      <div class="hero__eyebrow">Landscape Architect · Los Angeles</div>
+      <h1 class="hero__name">Gongying Pu</h1>
+      <div class="hero__role">Public landscapes &amp; civic ground</div>
+      <p class="hero__bio">
+        Seven years designing public space across Los Angeles — parks,
+        plazas, civic edges, the awkward leftover triangles between
+        freeways. Licensed. I work with native plant communities, durable
+        materials, and the way light moves through a site at four-thirty
+        in the afternoon.
+      </p>
+      <div class="hero__meta">
+        <div>
+          <span class="hero__meta-num">7</span>
+          <span class="hero__meta-label">years licensed</span>
+        </div>
+        <div>
+          <span class="hero__meta-num">LA</span>
+          <span class="hero__meta-label">based &amp; rooted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scrollhint" style="display:none;"></div>
+</header>
+
+<!-- ===== COLLAPSED TOP BAR ===== -->
+<div class="topbar" id="topbar" aria-label="Designer info">
+  <div class="topbar__center">
+    <span class="topbar__name">Gongying Pu</span>
+    <span class="topbar__sep">—</span>
+    <span>7 years licensed landscape architect</span>
+    <span class="topbar__hint" aria-hidden="true">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="vertical-align: -2px; margin-right: 5px;"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1"/><path d="M6 5.5v2.5M6 4v.01" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+      hover for bio
+    </span>
+  </div>
+</div>
+
+<!-- ===== FLOATING BIO OVERLAY (hover-expand) ===== -->
+<div class="bio-float" id="bioFloat" aria-hidden="true">
+  <div class="bio-float__inner">
+    <div class="bio-float__portrait">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="" />
+    </div>
+    <div>
+      <h2 class="bio-float__name">Gongying Pu</h2>
+      <div class="bio-float__role">Landscape Architect · Los Angeles</div>
+      <p class="bio-float__bio">
+        Seven years designing public space across Los Angeles — parks,
+        plazas, civic edges. Licensed. I work with native plant
+        communities, durable materials, and the way light moves through
+        a site at four-thirty in the afternoon.
+      </p>
+    </div>
+    <div class="bio-float__meta">
+      <div class="bio-float__meta-row"><span>Licensed</span><span>State of California, 2018</span></div>
+      <div class="bio-float__meta-row"><span>Education</span><span>M.L.A., UCLA Extension</span></div>
+      <div class="bio-float__meta-row"><span>Studio</span><span>Highland Park, LA</span></div>
+      <div class="bio-float__meta-row"><span>Email</span><span>hello@gongyingpu.studio</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WORK ===== -->
+<main class="work" id="work">
+  <div class="shell">
+    <div id="projectList"></div>
+  </div>
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
