@@ -35,9 +35,12 @@
   setText('[data-bind="role-short"]', SITE.role_short || "");
   setText('[data-bind="role-long"]', SITE.role_long || "");
   setText('[data-bind="bio"]', SITE.bio || "");
-  // years licensed: prefer auto-calc from licensed_since, fall back to manual years_licensed
+  // years experienced: prefer auto-calc from experienced_since
   let years = "";
-  if (SITE.licensed_since) {
+  if (SITE.experienced_since) {
+    const y = new Date().getFullYear() - Number(SITE.experienced_since);
+    if (!isNaN(y) && y >= 0) years = String(y);
+  } else if (SITE.licensed_since) {
     const y = new Date().getFullYear() - Number(SITE.licensed_since);
     if (!isNaN(y) && y >= 0) years = String(y);
   } else if (SITE.years_licensed != null) {
