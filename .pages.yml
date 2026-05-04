@@ -1,0 +1,54 @@
+media: images
+
+content:
+  - name: site
+    label: Site / Bio
+    type: file
+    path: content/site.md
+    fields:
+      - { name: name,              label: Name,                       type: string }
+      - { name: role_short,        label: Role (short, eyebrow),      type: string }
+      - { name: role_long,         label: Role (long, subhead),       type: string }
+      - { name: experienced_since, label: Experienced since (year),   type: number }
+      - { name: location_short,    label: Location (short, e.g. LA),  type: string }
+      - { name: location_long,     label: Location (long subtitle),   type: string }
+      - { name: portrait,          label: Portrait photo,             type: image }
+      - { name: topbar_line,       label: Top-bar tagline,            type: string }
+      - { name: education,         label: Education,                  type: string }
+      - { name: studio,            label: Studio (location),          type: string }
+      - { name: email,             label: Email,                      type: string }
+      - { name: body,              label: Bio paragraph,              type: text }
+
+  - name: projects
+    label: Projects
+    type: collection
+    path: content/projects
+    filename: '{order}-{fields.title | slugify}.md'
+    view:
+      fields: [order, title, location, year]
+      sort: [order, title, year]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: order,    label: Display order, type: number, required: true }
+      - { name: num,      label: Number badge (e.g. "01"), type: string }
+      - { name: title,    label: Project title, type: string, required: true }
+      - { name: location, label: Location, type: string }
+      - { name: year,     label: Year, type: number }
+      - { name: scope,    label: Scope, type: string }
+      - { name: client,   label: Client, type: string }
+      - { name: team,     label: Team / collaborators, type: string }
+      - name: after
+        label: After photos
+        type: image
+        list: true
+      - name: before
+        label: Before photos (optional)
+        type: image
+        list: true
+      - name: materials
+        label: Materials
+        type: string
+        list: true
+      - { name: body, label: Summary, type: text }
