@@ -1,8 +1,65 @@
-/* App logic for the hi-fi portfolio */
+/* App logic for the hi-fi portfolio — async content load from Markdown */
 
-(function() {
-  const U = window.U;
-  const PROJECTS = window.PROJECTS;
+(async function() {
+
+  // ─────────────────────────────────────────────────────────
+  // Load site bio + projects
+  // ─────────────────────────────────────────────────────────
+  let SITE, PROJECTS;
+  try {
+    [SITE, PROJECTS] = await Promise.all([
+      window.ContentLoader.loadSite(),
+      window.ContentLoader.loadProjects()
+    ]);
+  } catch (err) {
+    console.error("Content load failed:", err);
+    document.body.insertAdjacentHTML("afterbegin",
+      '<div style="padding:24px;font-family:sans-serif;color:#900;">' +
+      'Could not load site content. If you opened this file directly with file://, ' +
+      'serve it from a local server (e.g. <code>python3 -m http.server</code>) or push to GitHub Pages.<br/>' +
+      '<small>' + (err && err.message ? err.message : err) + '</small></div>');
+    return;
+  }
+
+  // ─────────────────────────────────────────────────────────
+  // Populate bio in hero, topbar, and floating overlay
+  // ─────────────────────────────────────────────────────────
+  function setText(sel, val) {
+    document.querySelectorAll(sel).forEach(el => { el.textContent = val; });
+  }
+  function setAttr(sel, attr, val) {
+    document.querySelectorAll(sel).forEach(el => { el.setAttribute(attr, val); });
+  }
+
+  setText('[data-bind="name"]', SITE.name || "");
+  setText('[data-bind="role-short"]', SITE.role_short || "");
+  setText('[data-bind="role-long"]', SITE.role_long || "");
+  setText('[data-bind="bio"]', SITE.bio || "");
+  // years licensed: prefer auto-calc from licensed_since, fall back to manual years_licensed
+  let years = "";
+  if (SITE.licensed_since) {
+    const y = new Date().getFullYear() - Number(SITE.licensed_since);
+    if (!isNaN(y) && y >= 0) years = String(y);
+  } else if (SITE.years_licensed != null) {
+    years = String(SITE.years_licensed);
+  }
+  setText('[data-bind="years-licensed"]', years);
+  // topbar tagline: if not explicitly set, build from years
+  const topbarLine = SITE.topbar_line || (years ? years + " years experienced · licensed landscape architect" : "");
+  setText('[data-bind="topbar-line"]', topbarLine);
+  setText('[data-bind="location-short"]', SITE.location_short || "");
+  setText('[data-bind="location-long"]', SITE.location_long || "");
+  setText('[data-bind="licensed"]', SITE.licensed || "");
+  setText('[data-bind="education"]', SITE.education || "");
+  setText('[data-bind="studio"]', SITE.studio || "");
+  setText('[data-bind="email"]', SITE.email || "");
+  if (SITE.portrait) {
+    setAttr('[data-bind="portrait"]', "src", SITE.portrait);
+  }
+  // page title
+  if (SITE.name) {
+    document.title = SITE.name + " — " + (SITE.role_short || "Portfolio");
+  }
 
   // ─────────────────────────────────────────────────────────
   // Render projects
@@ -32,14 +89,14 @@
           </div>
 
           <div class="viewer" data-viewer>
-            ${p.after.map((img, i) => `
+            ${p.after.map((src, i) => `
               <div class="viewer__slide ${i === 0 ? 'is-active' : ''}" data-pane="after" data-idx="${i}">
-                <img src="${U(img, 1600)}" alt="${p.title} — after, photo ${i+1}" loading="lazy" />
+                <img src="${src}" alt="${p.title} — after, photo ${i+1}" loading="lazy" />
               </div>
             `).join('')}
-            ${(p.before || []).map((img, i) => `
+            ${(p.before || []).map((src, i) => `
               <div class="viewer__slide" data-pane="before" data-idx="${i}">
-                <img src="${U(img, 1600)}" alt="${p.title} — before, photo ${i+1}" loading="lazy" />
+                <img src="${src}" alt="${p.title} — before, photo ${i+1}" loading="lazy" />
               </div>
             `).join('')}
             <div class="viewer__counter" data-counter>1 / ${p.after.length}</div>
@@ -54,14 +111,14 @@
           </div>
 
           <div class="thumbs" data-thumbs style="margin-top: 12px;">
-            ${p.after.map((img, i) => `
+            ${p.after.map((src, i) => `
               <div class="thumb ${i === 0 ? 'is-active' : ''}" data-thumb-pane="after" data-thumb-idx="${i}">
-                <img src="${U(img, 320)}" alt="" loading="lazy" />
+                <img src="${src}" alt="" loading="lazy" />
               </div>
             `).join('')}
-            ${(p.before || []).map((img, i) => `
+            ${(p.before || []).map((src, i) => `
               <div class="thumb" data-thumb-pane="before" data-thumb-idx="${i}">
-                <img src="${U(img, 320)}" alt="" loading="lazy" />
+                <img src="${src}" alt="" loading="lazy" />
               </div>
             `).join('')}
           </div>
@@ -84,8 +141,6 @@
 
   list.innerHTML = PROJECTS.map(tpl).join('');
 
-  // (work header removed)
-
   // ─────────────────────────────────────────────────────────
   // Per-project viewer behavior — tabs, thumbs, prev/next
   // ─────────────────────────────────────────────────────────
@@ -105,29 +160,23 @@
     }
 
     function render() {
-      // tabs
       tabs.forEach(t => {
         const is = t.dataset.tab === state.pane;
         t.classList.toggle('is-active', is);
         t.setAttribute('aria-selected', is ? 'true' : 'false');
       });
-      // slides
       slides.forEach(s => {
         const is = s.dataset.pane === state.pane && Number(s.dataset.idx) === state.idx;
         s.classList.toggle('is-active', is);
       });
-      // thumbs
       thumbs.forEach(th => {
         const is = th.dataset.thumbPane === state.pane && Number(th.dataset.thumbIdx) === state.idx;
         th.classList.toggle('is-active', is);
       });
-      // counter
       const total = paneCount(state.pane);
       counter.textContent = `${state.idx + 1} / ${total}`;
-      // tab counters
       const activeTabCount = art.querySelector(`[data-tab-count="${state.pane}"]`);
       if (activeTabCount) activeTabCount.textContent = `${state.idx + 1} / ${total}`;
-      // nav buttons
       navPrev.disabled = state.idx === 0;
       navNext.disabled = state.idx === total - 1;
     }
@@ -169,7 +218,6 @@
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
     const vh = window.innerHeight;
-    // Hero fades and lifts away as user scrolls. Fully gone by 50% vh.
     const heroProgress = Math.min(1, scrollY / (vh * 0.5));
     hero.style.opacity = String(1 - heroProgress);
     hero.style.transform = `translateY(${-heroProgress * 40}px)`;
@@ -178,8 +226,6 @@
     } else {
       hero.classList.remove('is-hidden');
     }
-
-    // Topbar appears once we're meaningfully past the hero
     const shouldShow = scrollY > vh * 0.6;
     if (shouldShow !== topbarVisible) {
       topbarVisible = shouldShow;
@@ -190,13 +236,11 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // hover behavior — open on hover, close when both topbar and overlay
-  // are unhovered. Click also toggles open (touch/keyboard accessibility).
   let bioOpen = false;
   let hoverCloseTimer = null;
 
   function openBio() {
-    if (!topbarVisible) return; // never open the float when hero is showing
+    if (!topbarVisible) return;
     bioOpen = true;
     bioFloat.classList.add('is-open');
     bioFloat.setAttribute('aria-hidden', 'false');
@@ -210,7 +254,6 @@
   function scheduleClose() {
     clearTimeout(hoverCloseTimer);
     hoverCloseTimer = setTimeout(() => {
-      // only close if neither topbar nor bioFloat is hovered
       if (!topbar.matches(':hover') && !bioFloat.matches(':hover')) {
         closeBio();
       }
@@ -223,17 +266,14 @@
   bioFloat.addEventListener('mouseleave', scheduleClose);
 
   topbar.addEventListener('click', (e) => {
-    // Allow nav links to function normally
     if (e.target.closest('a')) return;
     bioOpen ? closeBio() : openBio();
   });
 
-  // close with esc
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeBio();
   });
 
-  // smooth scroll for nav links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href').slice(1);

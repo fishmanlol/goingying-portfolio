@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Gongying Pu — Landscape Architect, Los Angeles</title>
+<title>Portfolio</title>
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,27 +12,21 @@
 <header class="hero" id="hero">
   <div class="shell" style="display: contents;">
     <div class="hero__portrait">
-      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80" alt="Gongying Pu portrait" />
+      <img data-bind="portrait" alt="Portrait" />
     </div>
     <div class="hero__copy">
-      <div class="hero__eyebrow">Landscape Architect · Los Angeles</div>
-      <h1 class="hero__name">Gongying Pu</h1>
-      <div class="hero__role">Public landscapes &amp; civic ground</div>
-      <p class="hero__bio">
-        Seven years designing public space across Los Angeles — parks,
-        plazas, civic edges, the awkward leftover triangles between
-        freeways. Licensed. I work with native plant communities, durable
-        materials, and the way light moves through a site at four-thirty
-        in the afternoon.
-      </p>
+      <div class="hero__eyebrow" data-bind="role-short"></div>
+      <h1 class="hero__name" data-bind="name"></h1>
+      <div class="hero__role" data-bind="role-long"></div>
+      <p class="hero__bio" data-bind="bio"></p>
       <div class="hero__meta">
         <div>
-          <span class="hero__meta-num">7</span>
-          <span class="hero__meta-label">years licensed</span>
+          <span class="hero__meta-num" data-bind="years-licensed"></span>
+          <span class="hero__meta-label">years experienced</span>
         </div>
         <div>
-          <span class="hero__meta-num">LA</span>
-          <span class="hero__meta-label">based &amp; rooted</span>
+          <span class="hero__meta-num" data-bind="location-short"></span>
+          <span class="hero__meta-label" data-bind="location-long"></span>
         </div>
       </div>
     </div>
@@ -43,9 +37,9 @@
 <!-- ===== COLLAPSED TOP BAR ===== -->
 <div class="topbar" id="topbar" aria-label="Designer info">
   <div class="topbar__center">
-    <span class="topbar__name">Gongying Pu</span>
+    <span class="topbar__name" data-bind="name"></span>
     <span class="topbar__sep">—</span>
-    <span>7 years licensed landscape architect</span>
+    <span data-bind="topbar-line"></span>
     <span class="topbar__hint" aria-hidden="true">
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="vertical-align: -2px; margin-right: 5px;"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1"/><path d="M6 5.5v2.5M6 4v.01" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
       hover for bio
@@ -57,23 +51,18 @@
 <div class="bio-float" id="bioFloat" aria-hidden="true">
   <div class="bio-float__inner">
     <div class="bio-float__portrait">
-      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="" />
+      <img data-bind="portrait" alt="" />
     </div>
     <div>
-      <h2 class="bio-float__name">Gongying Pu</h2>
-      <div class="bio-float__role">Landscape Architect · Los Angeles</div>
-      <p class="bio-float__bio">
-        Seven years designing public space across Los Angeles — parks,
-        plazas, civic edges. Licensed. I work with native plant
-        communities, durable materials, and the way light moves through
-        a site at four-thirty in the afternoon.
-      </p>
+      <h2 class="bio-float__name" data-bind="name"></h2>
+      <div class="bio-float__role" data-bind="role-short"></div>
+      <p class="bio-float__bio" data-bind="bio"></p>
     </div>
     <div class="bio-float__meta">
-      <div class="bio-float__meta-row"><span>Licensed</span><span>State of California, 2018</span></div>
-      <div class="bio-float__meta-row"><span>Education</span><span>M.L.A., UCLA Extension</span></div>
-      <div class="bio-float__meta-row"><span>Studio</span><span>Highland Park, LA</span></div>
-      <div class="bio-float__meta-row"><span>Email</span><span>hello@gongyingpu.studio</span></div>
+      <div class="bio-float__meta-row"><span>Licensed</span><span data-bind="licensed"></span></div>
+      <div class="bio-float__meta-row"><span>Education</span><span data-bind="education"></span></div>
+      <div class="bio-float__meta-row"><span>Studio</span><span data-bind="studio"></span></div>
+      <div class="bio-float__meta-row"><span>Email</span><span data-bind="email"></span></div>
     </div>
   </div>
 </div>
@@ -85,7 +74,8 @@
   </div>
 </main>
 
-<script src="data.js"></script>
+<script src="content/manifest.js"></script>
+<script src="content-loader.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
