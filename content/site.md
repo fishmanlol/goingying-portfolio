@@ -10,8 +10,4 @@ education: Master of Landscape Architecture (MLA) University of Southern Califor
 studio: Alhambra
 email: dandelionchoice@gmail.com
 ---
-I’m a licensed landscape architect in California. I have served as a lead designer and project manager on public projects in Los Angeles, bringing hands-on experience in design, construction costs, and project coordination.
-
-I offer landscape design and permit services for residential and small commercial projects across California. My experience includes hillside landscape design, MWELO requirements, planting that is easy to maintain, and irrigation design.
-
-From initial concepts to permit plans and review responses, I focus on creating thoughtful outdoor spaces that make the most of each project’s budget. My approach brings design quality, construction practicality, and ongoing maintenance into the conversation from the start.
+I’m a licensed landscape architect in California with experience as lead designer and project manager on Los Angeles public projects. I offer residential and small commercial landscape design and permit services statewide, including hillside design, MWELO documentation, planting, and irrigation. My approach balances design quality, construction costs, and ease of maintenance within your budget.
