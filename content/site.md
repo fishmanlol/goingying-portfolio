@@ -5,7 +5,7 @@ role_long: Residential & Small Commercial Landscape Design + Permitting
 experienced_since: 2019
 location_short: LA
 location_long: California
-portrait: /images/E7E36ED4-DE74-490B-935B-AA669CE6C4A0.jpg
+portrait: /images/E7E36ED4-DE74-490B-935B-AA669CE6C4A0-1.jpg
 education: Master of Landscape Architecture (MLA) University of Southern California (USC)
 studio: Alhambra
 email: dandelionchoice@gmail.com
