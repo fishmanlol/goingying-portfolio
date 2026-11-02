@@ -6,7 +6,8 @@ location: Fairfax District, Los Angeles
 year: 2021
 scope: "Park Entrance Improvements · 0.4 Acres "
 after:
-  - /images/1.jpg
-  - /images/2.jpg
+  - /images/1-1.jpg
+  - /images/3_under3MB.jpg
+  - /images/4_under3MB.jpg
 ---
-A neglected freeway-adjacent triangle reshaped into a shaded gathering space. Decomposed granite, board-formed concrete benches, and a canopy of jacaranda hold the heat of an asphalt block.
+Located across from The Grove mall, Pan Pacific Park features an upgraded entrance with new succulent planters and beautiful red brick paving patterns. Floating park lettering adds a contemporary touch, blending old-school charm with modern design.
