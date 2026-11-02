@@ -1,25 +1,18 @@
 ---
 order: 2
-num: 02
-title: Echo Park Lake Edge
-location: "Echo Park, Los Angeles"
-year: 2023
-scope: Waterfront restoration · 1.2 acres
-client: City of LA Bureau of Engineering
-team: w/ AHBE Landscape
+num: "02"
+title: Washington Irving Pocket Park
+location: 4103 W Washington Blvd, Los Angeles, CA 90018
+year: 2022
+scope: Improvements to a library-adjacent pocket park
 after:
-  - https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1600&q=80
-  - https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80
-  - https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1600&q=80
-  - https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?auto=format&fit=crop&w=1600&q=80
-  - https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80
+  - /images/after 1_under3MB.jpg
+  - /images/after 3_under3MB.jpg
+  - /images/after 4_under3MB.jpg
+  - /images/after 2_under3MB-1.jpg
 before:
-  - https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80
-materials:
-  - FSC ipe boardwalk
-  - Reclaimed granite cobble
-  - "Native bulrush, tule, cattail"
-  - Western sycamore
+  - /images/before 1_under3MB.jpg
+  - /images/before 2_under3MB.jpg
+  - /images/before 3_under3MB.jpg
 ---
-
-A degraded shoreline returned to a soft-edge wetland. Boardwalk routing keeps visitors above the rhizome zone while letting cattails and tule rebuild a habitat for redwing blackbirds and dragonflies.
+This library-adjacent children’s park transforms a narrow, sloping site into a series of inviting terraces for reading, play, and gathering. Integrating the existing retaining wall, the design features custom bookshelf-inspired fencing with trilogy gates, a reading amphitheater, a playground, and shaded lawn areas.
