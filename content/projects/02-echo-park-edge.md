@@ -4,7 +4,7 @@ num: "01"
 title: Washington Irving Pocket Park
 location: 4103 W Washington Blvd, Los Angeles, CA 90018
 year: 2022
-scope: Improvements to a library-adjacent pocket park
+scope: Library-adjacent pocket park
 after:
   - /images/after 1_under3MB.jpg
   - /images/after 3_under3MB.jpg
