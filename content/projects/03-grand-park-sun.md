@@ -1,23 +1,13 @@
 ---
 order: 3
-num: 03
-title: Grand Park Sun Garden
+num: "03"
+title: Echo Park Fitness Area
 location: Downtown Los Angeles
-year: 2023
-scope: Plaza intervention · 0.2 acres
-client: The Music Center
-team: Solo + arborist consult
+year: 2022
+scope: Park Fitness Area
 after:
-  - https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=80
-  - https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1600&q=80
-  - https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=1600&q=80
-  - https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=80
-before:
-  []
-materials:
-  - Decomposed granite paths
-  - "Poppy, white sage, yarrow"
-  - Galvanized steel edge
+  - /images/Echo Lake Fitness-6_faces_blurred_under3MB.jpg
+  - /images/Echo Lake Fitness-9_faces_blurred_under3MB.jpg
+  - /images/Echo Lake Fitness-58_faces_blurred_under3MB.jpg
 ---
-
-A south-facing pocket between civic buildings catches afternoon sun. Decomposed granite paths thread between drifts of California poppy, sage and yarrow — drought-rated, color-rated for the four-thirty hour.
+As lead designer and project manager, I led the development of the Echo Park Fitness Area, transforming a small section of the park into an inviting outdoor exercise space. Designed primarily for neighborhood seniors, the area provides fitness equipment that encourages physical activity and social connection. Integrated into the existing landscape, the project creates a welcoming setting for older adults to exercise, gather, and enjoy the park in daily life.
