@@ -1,6 +1,6 @@
 ---
-order: 3
-num: "03"
+order: 4
+num: "04"
 title: Echo Park Fitness Area
 location: Downtown Los Angeles
 year: 2022
