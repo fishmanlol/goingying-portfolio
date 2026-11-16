@@ -3,7 +3,7 @@ order: 4
 num: "04"
 title: Echo Park Fitness Area
 location: Downtown Los Angeles
-year: 2022
+year: 2021
 scope: Park Fitness Area
 after:
   - /images/Echo Lake Fitness-9_去可见脸人物_保留阴影_under3MB.jpg
