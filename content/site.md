@@ -1,5 +1,5 @@
 ---
-name: Gongying Pu
+name: Cleo Pu
 role_short: "Licensed Landscape Architect "
 role_long: Residential & Small Commercial Landscape Design + Permitting
 experienced_since: 2019
